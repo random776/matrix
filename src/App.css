@@ -1,0 +1,23 @@
+body {
+  font-family: "游ゴシック Light", sans-serif;
+    margin: 50px;
+    background-color: rgb(6, 76, 99);
+    color: rgb(220, 229, 237);
+}
+
+input {
+  height: 30px;
+  width: 50px;
+  margin: 5px;
+  border-radius: 3px;
+  font-size: 15px;
+  text-align: center;
+}
+
+button {
+  height: 30px;
+  width: 50px;
+  margin: 10px;
+  border-radius: 5px;
+  background-color: aqua;
+}
