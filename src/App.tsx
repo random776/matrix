@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import "./App.css"
+import "./App.css";
 
 function App() {
   const [n, setN] = useState(3);
@@ -25,11 +25,12 @@ function App() {
   }, [m, n]);
   return (
     <>
-    <h2>行基本変形演算ツール</h2>
-    <p>行基本変形の計算を一つ一つ追っていくためのアプリケーションです。</p>
-    <p>注）列基本変形には対応していません。</p>
-    <p>注）プログラムの特性上、行と列を0行目から数えています。</p>
-    <p>（例「1行目の1列目」→「0行目の0列目」）</p>
+      <h2>行基本変形演算ツール</h2>
+      <p>行基本変形の計算を一つ一つ追っていくためのアプリケーションです。</p>
+      <p>注）列基本変形には対応していません。</p>
+      <p>注）プログラムの特性上、行と列を0行目から数えています。</p>
+      <p>（例「1行目の1列目」→「0行目の0列目」）</p>
+      <p>注）スマートフォン環境で行うとうまく操作ができません。パソコン環境で操作することを推奨します。</p>
       <p>
         <input
           type="number"
@@ -60,7 +61,7 @@ function App() {
                 <td key={`${i},${j}`}>
                   {/* こうすることで被らない！ */}
                   <input
-                  type="number"
+                    type="number"
                     key={j}
                     value={matrix[i][j]}
                     onChange={(e) => {
@@ -186,7 +187,10 @@ function App() {
           実行
         </button>
       </p>
-      <small>Copyright(c) 2023 @東京大学駒場キャンパス ランゲルハンス棟 All Rights Reserved.</small>
+      <small>
+        Copyright(c) 2023 @東京大学駒場キャンパス ランゲルハンス棟 All Rights
+        Reserved.
+      </small>
     </>
   );
 }
