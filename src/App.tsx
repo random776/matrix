@@ -36,7 +36,7 @@ function App() {
           key={"行数"}
           value={n}
           onChange={(e) => {
-            const newN = Number(e.target.value);
+            const newN = parseFloat(e.target.value);
             setN(newN);
           }}
         />
@@ -46,7 +46,7 @@ function App() {
           key={"列数"}
           value={m}
           onChange={(e) => {
-            const newM = Number(e.target.value);
+            const newM = parseFloat(e.target.value);
             setM(newM);
           }}
         />
@@ -65,7 +65,7 @@ function App() {
                     value={matrix[i][j]}
                     onChange={(e) => {
                       const newMatrix = [...matrix];
-                      newMatrix[i][j] = Number(e.target.value);
+                      newMatrix[i][j] = parseFloat(e.target.value);
                       setMatrix(newMatrix);
                     }}
                   />
