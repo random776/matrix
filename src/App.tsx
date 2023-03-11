@@ -37,7 +37,7 @@ function App() {
           key={"行数"}
           value={n}
           onChange={(e) => {
-            const newN = parseFloat(e.target.value);
+            const newN = Number(e.target.value);
             setN(newN);
           }}
         />
@@ -47,7 +47,7 @@ function App() {
           key={"列数"}
           value={m}
           onChange={(e) => {
-            const newM = parseFloat(e.target.value);
+            const newM = Number(e.target.value);
             setM(newM);
           }}
         />
