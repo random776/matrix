@@ -21,3 +21,19 @@ button {
   border-radius: 5px;
   background-color: aqua;
 }
+
+.span {
+  height: 20px;
+  width: 35px;
+  margin: 5px;
+  border-radius: 3px;
+  font-size: 18px;
+  text-align: center;
+  padding: 10px;
+  background-color: rgb(27, 158, 145);;
+}
+
+.head {
+  font-size: 20px;
+  font-weight: lighter;
+}
