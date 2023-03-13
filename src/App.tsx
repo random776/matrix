@@ -33,7 +33,9 @@ function App() {
             const newN = Number(e.target.value);
             setN(newN);
             setMatrix(
-              [...Array(newN)].map((_, i) => [...Array(m)].map((_, j) => i * n + j + 1))
+              [...Array(newN)].map((_, i) =>
+                [...Array(m)].map((_, j) => i * n + j + 1)
+              )
             );
           }}
         />
@@ -45,7 +47,9 @@ function App() {
             const newM = Number(e.target.value);
             setM(newM);
             setMatrix(
-              [...Array(n)].map((_, i) => [...Array(newM)].map((_, j) => i * n + j + 1))
+              [...Array(n)].map((_, i) =>
+                [...Array(newM)].map((_, j) => i * n + j + 1)
+              )
             );
           }}
         />
