@@ -24,16 +24,17 @@ button {
 
 .span {
   height: 20px;
-  width: 35px;
+  width: 40px;
   margin: 5px;
   border-radius: 3px;
-  font-size: 18px;
+  font-size: 20px;
   text-align: center;
   padding: 10px;
-  background-color: rgb(27, 158, 145);;
+  background-color: rgb(7, 157, 142);;
+  border: 1px solid rgb(0, 184, 209);
 }
 
 .head {
-  font-size: 20px;
+  font-size: 1.2rem;
   font-weight: lighter;
 }
