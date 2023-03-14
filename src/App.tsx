@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 
 function App() {
@@ -9,14 +9,20 @@ function App() {
   );
   const [factor, setFactor] = useState(1); //デフォルト値は１
   const [factor2, setFactor2] = useState(1); //デフォルト値は１
+  const [factor3, setFactor3] = useState(1); //デフォルト値は１
   const [edittingRow, setEdittingRow] = useState(0); //デフォルト値は0行目
   const [edittingRow2, setEdittingRow2] = useState(0); //デフォルト値は0行目
   const [edittingRow3, setEdittingRow3] = useState(0); //デフォルト値は0行目
   const [edittingRow4, setEdittingRow4] = useState(0); //デフォルト値は0行目
   const [edittingRow5, setEdittingRow5] = useState(1); //デフォルト値は0行目
+  const [edittingRow6, setEdittingRow6] = useState(0); //デフォルト値は0行目
   // matrix=[[1,2,3],[4,5,6],[7,8,9]]
   //[[...Array(n)].map((_,j)=>0*n+j+1,[...Array(n)].map((_,j)=>0*n+j+1,[...Array(n)].map((_,j)=>0*n+j+1]=[[1,2,3],[4,5,6],[7,8,9]]
-
+  useEffect(() => {
+    setMatrix(
+      [...Array(n)].map((_, i) => [...Array(m)].map((_, j) => i * n + j + 1))
+    );
+  }, [m, n]);
   return (
     <>
       <h2>行基本変形演算ツール</h2>
@@ -24,33 +30,27 @@ function App() {
       <p>注）列基本変形には対応していません。</p>
       <p>注）プログラムの特性上、行と列を0行目から数えています。</p>
       <p>（例「1行目の1列目」→「0行目の0列目」）</p>
-      <p></p>
+      <p>
+        注）スマートフォンではうまく操作ができません。パソコン環境での実行推奨。
+      </p>
       <p>
         <input
           type="number"
           key={"行数"}
+          value={n}
           onChange={(e) => {
             const newN = Number(e.target.value);
             setN(newN);
-            setMatrix(
-              [...Array(newN)].map((_, i) =>
-                [...Array(m)].map((_, j) => i * n + j + 1)
-              )
-            );
           }}
         />
         行
         <input
           type="number"
+          value={m}
           key={"列数"}
           onChange={(e) => {
             const newM = Number(e.target.value);
             setM(newM);
-            setMatrix(
-              [...Array(n)].map((_, i) =>
-                [...Array(newM)].map((_, j) => i * n + j + 1)
-              )
-            );
           }}
         />
         列行列
@@ -64,6 +64,7 @@ function App() {
                   {/* こうすることで被らない！ */}
                   <input
                     type="number"
+                    value={matrix[i][j]}
                     key={j}
                     onChange={(e) => {
                       const newMatrix = [...matrix];
@@ -77,25 +78,11 @@ function App() {
           ))}
         </tbody>
       </table>
-      <h2 className="head">実行後の行列</h2>
-      <table>
-        <tbody>
-          {matrix.map((row, i) => (
-            <tr key={i}>
-              {row.map((col, j) => (
-                <td key={`${i},${j}2`}>
-                  {/* こうすることで被らない！ */}
-                  <div className="span">{matrix[i][j]}</div>
-                </td>
-              ))}
-            </tr>
-          ))}
-        </tbody>
-      </table>
       <p>操作1: m行目をλ倍する</p>
       <p>
         <input
           type="number"
+          value={edittingRow}
           key="n"
           onChange={(e) => {
             setEdittingRow(parseFloat(e.target.value)); //EdittingRowにiという値を格納する
@@ -105,6 +92,7 @@ function App() {
         <input
           type="number"
           key="m"
+          value={factor}
           onChange={(e) => {
             setFactor(parseFloat(e.target.value)); //Factorに格納した
           }}
@@ -122,11 +110,44 @@ function App() {
           実行
         </button>
       </p>
+      <p>操作1': m行目をλで割る</p>
+      <p>
+        <input
+          type="number"
+          value={edittingRow6}
+          key="n'"
+          onChange={(e) => {
+            setEdittingRow6(parseFloat(e.target.value)); //EdittingRowにiという値を格納する
+          }}
+        />
+        行目を
+        <input
+          type="number"
+          key="m'"
+          value={factor3}
+          onChange={(e) => {
+            setFactor3(parseFloat(e.target.value)); //Factorに格納した
+          }}
+        />
+        で割る
+        <button
+          key="no1'button"
+          onClick={() => {
+            const newMatrix = matrix.map((row, i) =>
+              i === edittingRow6 ? row.map((column) => column / factor3) : row
+            );
+            setMatrix(newMatrix);
+          }}
+        >
+          実行
+        </button>
+      </p>
       <p>操作2: m行目をλ倍してn行目に加える</p>
       <p>
         <input
           type="number"
           key="n2"
+          value={edittingRow3}
           onChange={(e) => {
             setEdittingRow3(parseFloat(e.target.value)); //EdittingRowにiという値を格納する
           }}
@@ -135,6 +156,7 @@ function App() {
         <input
           type="number"
           key="m2"
+          value={factor2}
           onChange={(e) => {
             setFactor2(parseFloat(e.target.value)); //Factorに格納した
           }}
@@ -143,6 +165,7 @@ function App() {
         <input
           type="number"
           key="o2"
+          value={edittingRow2}
           onChange={(e) => {
             setEdittingRow2(parseFloat(e.target.value)); //EdittingRowにiという値を格納する
           }}
@@ -168,6 +191,7 @@ function App() {
         <input
           type="number"
           key="n3"
+          value={edittingRow4}
           onChange={(e) => {
             setEdittingRow4(parseFloat(e.target.value)); //EdittingRowにiという値を格納する
           }}
@@ -176,6 +200,7 @@ function App() {
         <input
           type="number"
           key="m3"
+          value={edittingRow5}
           onChange={(e) => {
             setEdittingRow5(parseFloat(e.target.value)); //Factorに格納した
           }}
